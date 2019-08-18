@@ -1,0 +1,786 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\ayush\OneDrive\Desktop\stata class\24 june assignment log.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}24 Jun 2019, 16:05:55
+
+{com}. unempr_guj = log(guj) - log(gujlag)
+{err}command {bf}unempr_guj{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. gen unempr_guj = log(guj) - log(gujlag)
+{txt}(1 missing value generated)
+
+{com}. gen unempr_mp = log(mp) - log(mplag)
+{txt}(1 missing value generated)
+
+{com}. gen unempr_ap = log(ap) - log(aplag)
+{txt}(1 missing value generated)
+
+{com}. gen unempr_tn = log(tn) - log(tnlag)
+{txt}(1 missing value generated)
+
+{com}. gen unempr_kerala = log(kerala) - log(keralalag)
+{txt}(1 missing value generated)
+
+{com}. reg ln_mhr t
+{err}variable {bf}ln_mhr{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. generate ln_mhr = log(mhr)
+
+. generate ln_guj = log(guj)
+
+. gen ln_mp = log(mp)
+
+. gen ln_ap = log(ap)
+
+. gen Ln_tn = log(tn)
+
+. gen ln_kerala = log(kerala)
+
+. reg ln_mhr t
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       312
+{txt}{hline 13}{c +}{hline 34}   F(1, 310)       = {res}   319.37
+{txt}       Model {c |} {res} 13.6432199         1  13.6432199   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 13.2429298       310  .042719128   {txt}R-squared       ={res}    0.5074
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.5059
+{txt}       Total {c |} {res} 26.8861497       311  .086450642   {txt}Root MSE        =   {res} .20669
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}t {c |}{col 14}{res}{space 2}-.0023218{col 26}{space 2} .0001299{col 37}{space 1}  -17.87{col 46}{space 3}0.000{col 54}{space 4}-.0025774{col 67}{space 3}-.0020661
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 2.663471{col 26}{space 2}  .049663{col 37}{space 1}   53.63{col 46}{space 3}0.000{col 54}{space 4} 2.565752{col 67}{space 3}  2.76119
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg ln_mhr ln_guj ln_mp ln_ap Ln_tn ln_kerala t
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       312
+{txt}{hline 13}{c +}{hline 34}   F(6, 305)       = {res}   636.38
+{txt}       Model {c |} {res} 24.8973613         6  4.14956022   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.98878837       305  .006520618   {txt}R-squared       ={res}    0.9260
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9246
+{txt}       Total {c |} {res} 26.8861497       311  .086450642   {txt}Root MSE        =   {res} .08075
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}ln_guj {c |}{col 14}{res}{space 2} .0503683{col 26}{space 2} .0565949{col 37}{space 1}    0.89{col 46}{space 3}0.374{col 54}{space 4}-.0609976{col 67}{space 3} .1617343
+{txt}{space 7}ln_mp {c |}{col 14}{res}{space 2} .4874595{col 26}{space 2}  .058627{col 37}{space 1}    8.31{col 46}{space 3}0.000{col 54}{space 4} .3720949{col 67}{space 3} .6028242
+{txt}{space 7}ln_ap {c |}{col 14}{res}{space 2} .2845911{col 26}{space 2} .0470559{col 37}{space 1}    6.05{col 46}{space 3}0.000{col 54}{space 4} .1919957{col 67}{space 3} .3771864
+{txt}{space 7}Ln_tn {c |}{col 14}{res}{space 2} .0618834{col 26}{space 2} .0760117{col 37}{space 1}    0.81{col 46}{space 3}0.416{col 54}{space 4}-.0876904{col 67}{space 3} .2114571
+{txt}{space 3}ln_kerala {c |}{col 14}{res}{space 2} .0139563{col 26}{space 2}  .073682{col 37}{space 1}    0.19{col 46}{space 3}0.850{col 54}{space 4}-.1310331{col 67}{space 3} .1589456
+{txt}{space 11}t {c |}{col 14}{res}{space 2}-.0002088{col 26}{space 2} .0001148{col 37}{space 1}   -1.82{col 46}{space 3}0.070{col 54}{space 4}-.0004346{col 67}{space 3}  .000017
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .2348494{col 26}{space 2} .0929317{col 37}{space 1}    2.53{col 46}{space 3}0.012{col 54}{space 4}  .051981{col 67}{space 3} .4177178
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. hettest
+
+{txt}Breusch-Pagan / Cook-Weisberg test for heteroskedasticity 
+         Ho: Constant variance
+{p 9 20}Variables: fitted values of ln_mhr
+
+{col 10}chi2({res}1{txt}){col 23}={res}     3.74
+{txt}{col 10}Prob > chi2{col 23}={res}   0.0531
+
+{com}. tsset t
+{res}{txt}{col 9}time variable:  {res}{col 25}t, 1978m1 to 2003m12
+{txt}{col 17}delta:  {res}1 month
+
+{com}. reg ln_mhr D.ln_mhr
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       311
+{txt}{hline 13}{c +}{hline 34}   F(1, 309)       = {res}     0.69
+{txt}       Model {c |} {res} .059474075         1  .059474075   {txt}Prob > F        ={res}    0.4085
+{txt}    Residual {c |} {res} 26.8259985       309  .086815529   {txt}R-squared       ={res}    0.0022
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0010
+{txt}       Total {c |} {res} 26.8854726       310  .086727331   {txt}Root MSE        =   {res} .29464
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}ln_mhr {c |}
+{space 9}D1. {c |}{col 14}{res}{space 2} .5064492{col 26}{space 2} .6118863{col 37}{space 1}    0.83{col 46}{space 3}0.408{col 54}{space 4}-.6975417{col 67}{space 3}  1.71044
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 1.801072{col 26}{space 2} .0167079{col 37}{space 1}  107.80{col 46}{space 3}0.000{col 54}{space 4} 1.768197{col 67}{space 3} 1.833948
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg ln_mhr L.ln_mhr
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       311
+{txt}{hline 13}{c +}{hline 34}   F(1, 309)       = {res} 35594.24
+{txt}       Model {c |} {res} 26.6540837         1  26.6540837   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .231388877       309  .000748831   {txt}R-squared       ={res}    0.9914
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9914
+{txt}       Total {c |} {res} 26.8854726       310  .086727331   {txt}Root MSE        =   {res} .02736
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}ln_mhr {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .9957429{col 26}{space 2} .0052779{col 37}{space 1}  188.66{col 46}{space 3}0.000{col 54}{space 4} .9853578{col 67}{space 3} 1.006128
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .0075568{col 26}{space 2} .0096319{col 37}{space 1}    0.78{col 46}{space 3}0.433{col 54}{space 4}-.0113956{col 67}{space 3} .0265092
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. arima ln_mhr, arima( 1 1 1 )
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res} 688.73631{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res} 693.59391{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res} 694.97258{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res} 696.80064{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res} 697.20946{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res} 697.27211{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res} 697.28944{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res} 697.29254{txt}  
+{res}{txt}Iteration 8:{col 16}log likelihood = {res} 697.29282{txt}  
+{res}{txt}Iteration 9:{col 16}log likelihood = {res} 697.29282{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample:  {res}1978m2 - 2003m12                       {txt}Number of obs     = {res}       311
+                                                {txt}Wald chi2({res}2{txt})      =  {res}   330.24
+{txt}Log likelihood = {res} 697.2928                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}    D.ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ln_mhr       {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .0000957{col 26}{space 2} .0036894{col 37}{space 1}    0.03{col 46}{space 3}0.979{col 54}{space 4}-.0071355{col 67}{space 3} .0073268
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .8821405{col 26}{space 2} .0718232{col 37}{space 1}   12.28{col 46}{space 3}0.000{col 54}{space 4} .7413697{col 67}{space 3} 1.022911
+{txt}{space 12} {c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2}-.7142523{col 26}{space 2} .1028259{col 37}{space 1}   -6.95{col 46}{space 3}0.000{col 54}{space 4}-.9157873{col 67}{space 3}-.5127173
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} .0256963{col 26}{space 2} .0008904{col 37}{space 1}   28.86{col 46}{space 3}0.000{col 54}{space 4}  .023951{col 67}{space 3} .0274415
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. estat archlm, lags(1)
+{err}subcommand {bf:estat} {bf:archlm} is unrecognized
+{txt}{search r(321), local:r(321);}
+
+{com}. estat archlm,lags(1)
+{err}subcommand {bf:estat} {bf:archlm} is unrecognized
+{txt}{search r(321), local:r(321);}
+
+{com}. estat archlm, lags(1)
+{err}subcommand {bf:estat} {bf:archlm} is unrecognized
+{txt}{search r(321), local:r(321);}
+
+{com}. reg D.ln_mjr
+{err}variable {bf}ln_mjr{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. reg D.ln_mhr
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       311
+{txt}{hline 13}{c +}{hline 34}   F(0, 310)       = {res}     0.00
+{txt}       Model {c |} {res}          0         0           .   {txt}Prob > F        ={res}         .
+{txt}    Residual {c |} {res} .231876076       310  .000747987   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0000
+{txt}       Total {c |} {res} .231876076       310  .000747987   {txt}Root MSE        =   {res} .02735
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    D.ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2}-.0001109{col 26}{space 2} .0015508{col 37}{space 1}   -0.07{col 46}{space 3}0.943{col 54}{space 4}-.0031624{col 67}{space 3} .0029406
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. estat archlm, lasg(1)
+{err}option {bf:lasg()} not allowed
+{txt}{search r(198), local:r(198);}
+
+{com}. estat archlm, lags(1)
+{txt}LM test for autoregressive conditional heteroskedasticity (ARCH)
+{hline 13}{c TT}{hline 61}
+{col 5}lags({it:p}){col 14}{c |}{col 25}chi2{col 44}df{col 63}Prob > chi2
+{hline 13}{c +}{hline 61}
+{col 6}  1{col 14}{c |}{res}{col 20}     7.917{col 43}  1{col 63}  0.0049
+{txt}{hline 13}{c BT}{hline 61}
+{col 10}H0: no ARCH effects{col 35}{it:vs.}{col 40}H1: ARCH({it:p}) disturbance
+
+{com}. estat archlm, lags(1)
+{txt}LM test for autoregressive conditional heteroskedasticity (ARCH)
+{hline 13}{c TT}{hline 61}
+{col 5}lags({it:p}){col 14}{c |}{col 25}chi2{col 44}df{col 63}Prob > chi2
+{hline 13}{c +}{hline 61}
+{col 6}  1{col 14}{c |}{res}{col 20}     7.917{col 43}  1{col 63}  0.0049
+{txt}{hline 13}{c BT}{hline 61}
+{col 10}H0: no ARCH effects{col 35}{it:vs.}{col 40}H1: ARCH({it:p}) disturbance
+
+{com}. ** YES THERE IS ARCH EFFECT
+
+. arch D.ln_mhr, arch(1) garch(1)
+
+{txt}(setting optimization to BHHH)
+Iteration 0:{col 16}log likelihood = {res} 682.52265{txt}  
+Iteration 1:{col 16}log likelihood = {res} 685.21383{txt}  
+Iteration 2:{col 16}log likelihood = {res} 687.04853{txt}  
+Iteration 3:{col 16}log likelihood = {res} 687.12011{txt}  
+Iteration 4:{col 16}log likelihood = {res} 687.12315{txt}  
+(switching optimization to BFGS)
+Iteration 5:{col 16}log likelihood = {res} 687.12402{txt}  
+Iteration 6:{col 16}log likelihood = {res} 687.12452{txt}  
+Iteration 7:{col 16}log likelihood = {res} 687.12453{txt}  
+
+ARCH family regression
+
+Sample: {res}1978m2 - 2003m12                          {txt}Number of obs   = {res}       311
+{txt}Distribution: {res}Gaussian                            {txt}Wald chi2({res}.{txt})    =  {res}        .
+{txt}Log likelihood = {res} 687.1245                        {txt}Prob > chi2     =     {res}     .
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}    D.ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ln_mhr       {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}-.0025893{col 26}{space 2} .0014432{col 37}{space 1}   -1.79{col 46}{space 3}0.073{col 54}{space 4} -.005418{col 67}{space 3} .0002394
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARCH         {txt}{c |}
+{space 8}arch {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2}  .212135{col 26}{space 2}   .07291{col 37}{space 1}    2.91{col 46}{space 3}0.004{col 54}{space 4} .0692341{col 67}{space 3} .3550359
+{txt}{space 12} {c |}
+{space 7}garch {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .6066071{col 26}{space 2} .1188435{col 37}{space 1}    5.10{col 46}{space 3}0.000{col 54}{space 4} .3736781{col 67}{space 3}  .839536
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .0001434{col 26}{space 2} .0000785{col 37}{space 1}    1.83{col 46}{space 3}0.068{col 54}{space 4}-.0000105{col 67}{space 3} .0002974
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. ** INNOVATION INTRODUCED GARCH IS MORE SIGNIFICANT THAN ARCH
+
+. arch D.ln_mhr,ar(1)ma(1 4)
+
+{txt}(setting optimization to BHHH)
+Iteration 0:{col 16}log likelihood = {res} 688.87188{txt}  
+Iteration 1:{col 16}log likelihood = {res} 696.14044{txt}  
+Iteration 2:{col 16}log likelihood = {res} 697.83642{txt}  
+Iteration 3:{col 16}log likelihood = {res} 697.90378{txt}  
+Iteration 4:{col 16}log likelihood = {res} 697.90518{txt}  
+(switching optimization to BFGS)
+Iteration 5:{col 16}log likelihood = {res} 697.92033{txt}  
+Iteration 6:{col 16}log likelihood = {res} 697.92054{txt}  
+Iteration 7:{col 16}log likelihood = {res} 697.92056{txt}  
+
+Time-series regression -- ARMA disturbances
+
+Sample: {res}1978m2 - 2003m12                          {txt}Number of obs   = {res}       311
+{txt}Distribution: {res}Gaussian                            {txt}Wald chi2({res}3{txt})    =  {res}   287.74
+{txt}Log likelihood = {res} 697.9206                        {txt}Prob > chi2     =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}    D.ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ln_mhr       {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}  .000039{col 26}{space 2}  .003653{col 37}{space 1}    0.01{col 46}{space 3}0.991{col 54}{space 4}-.0071207{col 67}{space 3} .0071986
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .8480093{col 26}{space 2} .0954316{col 37}{space 1}    8.89{col 46}{space 3}0.000{col 54}{space 4} .6609668{col 67}{space 3} 1.035052
+{txt}{space 12} {c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2}-.6929179{col 26}{space 2} .1169466{col 37}{space 1}   -5.93{col 46}{space 3}0.000{col 54}{space 4} -.922129{col 67}{space 3}-.4637068
+{txt}{space 9}L4. {c |}{col 14}{res}{space 2} .0584539{col 26}{space 2} .0524977{col 37}{space 1}    1.11{col 46}{space 3}0.266{col 54}{space 4}-.0444398{col 67}{space 3} .1613476
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+     /SIGMA2 {c |}{col 14}{res}{space 2} .0006582{col 26}{space 2} .0000461{col 37}{space 1}   14.27{col 46}{space 3}0.000{col 54}{space 4} .0005677{col 67}{space 3} .0007486
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. arch D.ln_wpi,ar(1)ma(1 4) arch(1) garch(1)
+{err}variable {bf}ln_wpi{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. arch D.ln_mhr,ar(1)ma(1 4) arch(1) garch(1)
+
+{txt}(setting optimization to BHHH)
+Iteration 0:{col 16}log likelihood = {res} 690.81143{txt}  
+Iteration 1:{col 16}log likelihood = {res} 695.49074{txt}  
+Iteration 2:{col 16}log likelihood = {res}  700.0959{txt}  
+Iteration 3:{col 16}log likelihood = {res} 702.51046{txt}  
+Iteration 4:{col 16}log likelihood = {res} 705.65991{txt}  
+(switching optimization to BFGS)
+Iteration 5:{col 16}log likelihood = {res} 706.08607{txt}  
+Iteration 6:{col 16}log likelihood = {res} 706.19016{txt}  
+Iteration 7:{col 16}log likelihood = {res} 706.29055{txt}  
+Iteration 8:{col 16}log likelihood = {res} 706.29755{txt}  
+Iteration 9:{col 16}log likelihood = {res} 706.29849{txt}  
+Iteration 10:{col 16}log likelihood = {res} 706.29853{txt}  
+Iteration 11:{col 16}log likelihood = {res} 706.29853{txt}  
+
+ARCH family regression -- ARMA disturbances
+
+Sample: {res}1978m2 - 2003m12                          {txt}Number of obs   = {res}       311
+{txt}Distribution: {res}Gaussian                            {txt}Wald chi2({res}3{txt})    =  {res}   357.91
+{txt}Log likelihood = {res} 706.2985                        {txt}Prob > chi2     =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}    D.ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ln_mhr       {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} -.003006{col 26}{space 2} .0035108{col 37}{space 1}   -0.86{col 46}{space 3}0.392{col 54}{space 4} -.009887{col 67}{space 3} .0038751
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .8601248{col 26}{space 2} .0844388{col 37}{space 1}   10.19{col 46}{space 3}0.000{col 54}{space 4} .6946277{col 67}{space 3} 1.025622
+{txt}{space 12} {c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2}-.7026632{col 26}{space 2} .1097192{col 37}{space 1}   -6.40{col 46}{space 3}0.000{col 54}{space 4}-.9177089{col 67}{space 3}-.4876175
+{txt}{space 9}L4. {c |}{col 14}{res}{space 2} .0678799{col 26}{space 2} .0569262{col 37}{space 1}    1.19{col 46}{space 3}0.233{col 54}{space 4}-.0436934{col 67}{space 3} .1794533
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARCH         {txt}{c |}
+{space 8}arch {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .0837228{col 26}{space 2} .0312075{col 37}{space 1}    2.68{col 46}{space 3}0.007{col 54}{space 4} .0225571{col 67}{space 3} .1448884
+{txt}{space 12} {c |}
+{space 7}garch {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .8938813{col 26}{space 2} .0393155{col 37}{space 1}   22.74{col 46}{space 3}0.000{col 54}{space 4} .8168243{col 67}{space 3} .9709382
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .0000177{col 26}{space 2} .0000142{col 37}{space 1}    1.25{col 46}{space 3}0.212{col 54}{space 4}-.0000101{col 67}{space 3} .0000455
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. test[ARCH]L1.arch [ARCH]L1.garch
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[ARCH]L.arch = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [ARCH]L.garch = 0{p_end}
+
+{txt}{col 12}chi2(  2) ={res} 1720.27
+{txt}{col 10}Prob > chi2 =  {res}  0.0000
+
+{com}. reg ln_mhr ln_guj ln_mp ln_ap Ln_tn ln_kerala t
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       312
+{txt}{hline 13}{c +}{hline 34}   F(6, 305)       = {res}   636.38
+{txt}       Model {c |} {res} 24.8973613         6  4.14956022   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.98878837       305  .006520618   {txt}R-squared       ={res}    0.9260
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9246
+{txt}       Total {c |} {res} 26.8861497       311  .086450642   {txt}Root MSE        =   {res} .08075
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}ln_guj {c |}{col 14}{res}{space 2} .0503683{col 26}{space 2} .0565949{col 37}{space 1}    0.89{col 46}{space 3}0.374{col 54}{space 4}-.0609976{col 67}{space 3} .1617343
+{txt}{space 7}ln_mp {c |}{col 14}{res}{space 2} .4874595{col 26}{space 2}  .058627{col 37}{space 1}    8.31{col 46}{space 3}0.000{col 54}{space 4} .3720949{col 67}{space 3} .6028242
+{txt}{space 7}ln_ap {c |}{col 14}{res}{space 2} .2845911{col 26}{space 2} .0470559{col 37}{space 1}    6.05{col 46}{space 3}0.000{col 54}{space 4} .1919957{col 67}{space 3} .3771864
+{txt}{space 7}Ln_tn {c |}{col 14}{res}{space 2} .0618834{col 26}{space 2} .0760117{col 37}{space 1}    0.81{col 46}{space 3}0.416{col 54}{space 4}-.0876904{col 67}{space 3} .2114571
+{txt}{space 3}ln_kerala {c |}{col 14}{res}{space 2} .0139563{col 26}{space 2}  .073682{col 37}{space 1}    0.19{col 46}{space 3}0.850{col 54}{space 4}-.1310331{col 67}{space 3} .1589456
+{txt}{space 11}t {c |}{col 14}{res}{space 2}-.0002088{col 26}{space 2} .0001148{col 37}{space 1}   -1.82{col 46}{space 3}0.070{col 54}{space 4}-.0004346{col 67}{space 3}  .000017
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .2348494{col 26}{space 2} .0929317{col 37}{space 1}    2.53{col 46}{space 3}0.012{col 54}{space 4}  .051981{col 67}{space 3} .4177178
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. mean mhr, guj, mp, ap, tn, kerala
+{err}invalid 'mp' 
+{txt}{search r(198), local:r(198);}
+
+{com}. mean mhr
+{res}
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}       312
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 9}mhr {c |}{col 14}{res}{space 2} 6.339744{col 26}{space 2} .1174912{col 37}{space 5} 6.108565{col 51}{space 3} 6.570922
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. log(mean mhr) - log(mean mhrlag)
+{err}( invalid
+{txt}{search r(198), local:r(198);}
+
+{com}. mean mhr - mean mhrlag
+{err}variable {bf}mean{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. mean mhr
+{res}
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}       312
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 9}mhr {c |}{col 14}{res}{space 2} 6.339744{col 26}{space 2} .1174912{col 37}{space 5} 6.108565{col 51}{space 3} 6.570922
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. mean mhr = mean mhr
+{err}mean not found
+{txt}{search r(111), local:r(111);}
+
+{com}. generate mean mhr = mean mhr
+{err}variable {bf}mhr{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. gen meanmhr = mean mhr
+{err}mean not found
+{txt}{search r(111), local:r(111);}
+
+{com}. mean mhr - mean kerala
+{err}variable {bf}mean{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. vce
+{res}
+{txt}Covariance matrix of coefficients of {res:mean} model
+{res}
+{txt}{space 0}{space 0}{ralign 12:e(V)}{space 1}{c |}{space 1}{ralign 10:mhr}{space 1}
+{space 0}{hline 13}{c   +}{hline 12}
+{space 0}{space 0}{ralign 12:mhr}{space 1}{c |}{space 1}{ralign 10:{res:{sf: .01380418}}}{space 1}
+
+{com}. reg mhr guj ap mp tn kerala t
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       312
+{txt}{hline 13}{c +}{hline 34}   F(6, 305)       = {res}   764.97
+{txt}       Model {c |} {res} 1255.98535         6  209.330892   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 83.4618258       305  .273645331   {txt}R-squared       ={res}    0.9377
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9365
+{txt}       Total {c |} {res} 1339.44718       311  4.30690412   {txt}Root MSE        =   {res} .52311
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}guj {c |}{col 14}{res}{space 2} .0610016{col 26}{space 2} .0648704{col 37}{space 1}    0.94{col 46}{space 3}0.348{col 54}{space 4}-.0666485{col 67}{space 3} .1886517
+{txt}{space 10}ap {c |}{col 14}{res}{space 2} .4306734{col 26}{space 2} .0428194{col 37}{space 1}   10.06{col 46}{space 3}0.000{col 54}{space 4} .3464146{col 67}{space 3} .5149322
+{txt}{space 10}mp {c |}{col 14}{res}{space 2} .3641525{col 26}{space 2} .0567149{col 37}{space 1}    6.42{col 46}{space 3}0.000{col 54}{space 4} .2525505{col 67}{space 3} .4757546
+{txt}{space 10}tn {c |}{col 14}{res}{space 2} .0766566{col 26}{space 2} .0656947{col 37}{space 1}    1.17{col 46}{space 3}0.244{col 54}{space 4}-.0526156{col 67}{space 3} .2059287
+{txt}{space 6}kerala {c |}{col 14}{res}{space 2} .0649942{col 26}{space 2} .0713269{col 37}{space 1}    0.91{col 46}{space 3}0.363{col 54}{space 4} -.075361{col 67}{space 3} .2053494
+{txt}{space 11}t {c |}{col 14}{res}{space 2} .0008115{col 26}{space 2} .0006588{col 37}{space 1}    1.23{col 46}{space 3}0.219{col 54}{space 4}-.0004848{col 67}{space 3} .0021078
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.4157997{col 26}{space 2} .4126485{col 37}{space 1}   -1.01{col 46}{space 3}0.314{col 54}{space 4}-1.227798{col 67}{space 3} .3961986
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. vif
+
+{txt}    Variable {c |}       VIF       1/VIF  
+{hline 13}{c +}{hline 22}
+{space 10}tn {c |} {res}    18.95    0.052771
+{txt}{space 6}kerala {c |} {res}    16.26    0.061499
+{txt}{space 10}mp {c |} {res}    15.05    0.066433
+{txt}{space 10}ap {c |} {res}    12.14    0.082357
+{txt}{space 9}guj {c |} {res}    12.11    0.082570
+{txt}{space 11}t {c |} {res}     4.01    0.249153
+{txt}{hline 13}{c +}{hline 22}
+    Mean VIF {c |} {res}    13.09
+
+{com}. **VIF tells the extent to which standard error of the coef of interest, variance the square of the standard error has been inflated upwards, std error = sqrt variance to inflated twice its basic size.
+
+. reg mhr guj ap mp tn t
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       312
+{txt}{hline 13}{c +}{hline 34}   F(5, 306)       = {res}   918.31
+{txt}       Model {c |} {res} 1255.75814         5  251.151629   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 83.6890371       306  .273493585   {txt}R-squared       ={res}    0.9375
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9365
+{txt}       Total {c |} {res} 1339.44718       311  4.30690412   {txt}Root MSE        =   {res} .52297
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}guj {c |}{col 14}{res}{space 2} .0751006{col 26}{space 2} .0629806{col 37}{space 1}    1.19{col 46}{space 3}0.234{col 54}{space 4}-.0488294{col 67}{space 3} .1990305
+{txt}{space 10}ap {c |}{col 14}{res}{space 2} .4220615{col 26}{space 2} .0417518{col 37}{space 1}   10.11{col 46}{space 3}0.000{col 54}{space 4} .3399046{col 67}{space 3} .5042185
+{txt}{space 10}mp {c |}{col 14}{res}{space 2} .3977046{col 26}{space 2} .0431248{col 37}{space 1}    9.22{col 46}{space 3}0.000{col 54}{space 4}  .312846{col 67}{space 3} .4825632
+{txt}{space 10}tn {c |}{col 14}{res}{space 2} .0833575{col 26}{space 2} .0652637{col 37}{space 1}    1.28{col 46}{space 3}0.202{col 54}{space 4}-.0450649{col 67}{space 3} .2117799
+{txt}{space 11}t {c |}{col 14}{res}{space 2} .0004487{col 26}{space 2} .0005246{col 37}{space 1}    0.86{col 46}{space 3}0.393{col 54}{space 4}-.0005837{col 67}{space 3}  .001481
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.1421793{col 26}{space 2}  .282959{col 37}{space 1}   -0.50{col 46}{space 3}0.616{col 54}{space 4}-.6989708{col 67}{space 3} .4146123
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. vif
+
+{txt}    Variable {c |}       VIF       1/VIF  
+{hline 13}{c +}{hline 22}
+{space 10}tn {c |} {res}    18.71    0.053440
+{txt}{space 10}ap {c |} {res}    11.55    0.086575
+{txt}{space 9}guj {c |} {res}    11.42    0.087551
+{txt}{space 10}mp {c |} {res}     8.71    0.114838
+{txt}{space 11}t {c |} {res}     2.55    0.392637
+{txt}{hline 13}{c +}{hline 22}
+    Mean VIF {c |} {res}    10.59
+
+{com}. reg mhr guj ap mp t
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       312
+{txt}{hline 13}{c +}{hline 34}   F(4, 307)       = {res}  1145.12
+{txt}       Model {c |} {res} 1255.31198         4  313.827995   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 84.1352002       307  .274056027   {txt}R-squared       ={res}    0.9372
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9364
+{txt}       Total {c |} {res} 1339.44718       311  4.30690412   {txt}Root MSE        =   {res}  .5235
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}guj {c |}{col 14}{res}{space 2} .1109827{col 26}{space 2} .0564256{col 37}{space 1}    1.97{col 46}{space 3}0.050{col 54}{space 4}-.0000471{col 67}{space 3} .2220126
+{txt}{space 10}ap {c |}{col 14}{res}{space 2} .4439513{col 26}{space 2} .0381113{col 37}{space 1}   11.65{col 46}{space 3}0.000{col 54}{space 4} .3689589{col 67}{space 3} .5189437
+{txt}{space 10}mp {c |}{col 14}{res}{space 2} .4305104{col 26}{space 2} .0346771{col 37}{space 1}   12.41{col 46}{space 3}0.000{col 54}{space 4} .3622755{col 67}{space 3} .4987452
+{txt}{space 11}t {c |}{col 14}{res}{space 2} .0006345{col 26}{space 2} .0005045{col 37}{space 1}    1.26{col 46}{space 3}0.209{col 54}{space 4}-.0003583{col 67}{space 3} .0016273
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.2054003{col 26}{space 2} .2788823{col 37}{space 1}   -0.74{col 46}{space 3}0.462{col 54}{space 4}-.7541629{col 67}{space 3} .3433623
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. vif
+
+{txt}    Variable {c |}       VIF       1/VIF  
+{hline 13}{c +}{hline 22}
+{space 10}ap {c |} {res}     9.60    0.104118
+{txt}{space 9}guj {c |} {res}     9.15    0.109299
+{txt}{space 10}mp {c |} {res}     5.62    0.177970
+{txt}{space 11}t {c |} {res}     2.35    0.425372
+{txt}{hline 13}{c +}{hline 22}
+    Mean VIF {c |} {res}     6.68
+
+{com}. ** DROPPED VARIABLES to lower the VIF below 10
+
+. ** VIF = 1/ (1- R^2)
+
+. arch D.ln_mhr,ar(1)ma(1 4) arch(1) garch(1)
+
+{txt}(setting optimization to BHHH)
+Iteration 0:{col 16}log likelihood = {res} 690.81143{txt}  
+Iteration 1:{col 16}log likelihood = {res} 695.49074{txt}  
+Iteration 2:{col 16}log likelihood = {res}  700.0959{txt}  
+Iteration 3:{col 16}log likelihood = {res} 702.51046{txt}  
+Iteration 4:{col 16}log likelihood = {res} 705.65991{txt}  
+(switching optimization to BFGS)
+Iteration 5:{col 16}log likelihood = {res} 706.08607{txt}  
+Iteration 6:{col 16}log likelihood = {res} 706.19016{txt}  
+Iteration 7:{col 16}log likelihood = {res} 706.29055{txt}  
+Iteration 8:{col 16}log likelihood = {res} 706.29755{txt}  
+Iteration 9:{col 16}log likelihood = {res} 706.29849{txt}  
+Iteration 10:{col 16}log likelihood = {res} 706.29853{txt}  
+Iteration 11:{col 16}log likelihood = {res} 706.29853{txt}  
+
+ARCH family regression -- ARMA disturbances
+
+Sample: {res}1978m2 - 2003m12                          {txt}Number of obs   = {res}       311
+{txt}Distribution: {res}Gaussian                            {txt}Wald chi2({res}3{txt})    =  {res}   357.91
+{txt}Log likelihood = {res} 706.2985                        {txt}Prob > chi2     =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}    D.ln_mhr{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ln_mhr       {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} -.003006{col 26}{space 2} .0035108{col 37}{space 1}   -0.86{col 46}{space 3}0.392{col 54}{space 4} -.009887{col 67}{space 3} .0038751
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .8601248{col 26}{space 2} .0844388{col 37}{space 1}   10.19{col 46}{space 3}0.000{col 54}{space 4} .6946277{col 67}{space 3} 1.025622
+{txt}{space 12} {c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2}-.7026632{col 26}{space 2} .1097192{col 37}{space 1}   -6.40{col 46}{space 3}0.000{col 54}{space 4}-.9177089{col 67}{space 3}-.4876175
+{txt}{space 9}L4. {c |}{col 14}{res}{space 2} .0678799{col 26}{space 2} .0569262{col 37}{space 1}    1.19{col 46}{space 3}0.233{col 54}{space 4}-.0436934{col 67}{space 3} .1794533
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARCH         {txt}{c |}
+{space 8}arch {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .0837228{col 26}{space 2} .0312075{col 37}{space 1}    2.68{col 46}{space 3}0.007{col 54}{space 4} .0225571{col 67}{space 3} .1448884
+{txt}{space 12} {c |}
+{space 7}garch {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .8938813{col 26}{space 2} .0393155{col 37}{space 1}   22.74{col 46}{space 3}0.000{col 54}{space 4} .8168243{col 67}{space 3} .9709382
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .0000177{col 26}{space 2} .0000142{col 37}{space 1}    1.25{col 46}{space 3}0.212{col 54}{space 4}-.0000101{col 67}{space 3} .0000455
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. generate meanmhr
+{err}=exp required
+{txt}{search r(100), local:r(100);}
+
+{com}. generate meanmhr = mean(mhr)
+{err}unknown function mean()
+{txt}{search r(133), local:r(133);}
+
+{com}. generate meanmhr = mean mhr
+{err}mean not found
+{txt}{search r(111), local:r(111);}
+
+{com}. mean mhr
+{res}
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}       312
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 9}mhr {c |}{col 14}{res}{space 2} 6.339744{col 26}{space 2} .1174912{col 37}{space 5} 6.108565{col 51}{space 3} 6.570922
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. log (mean mhr)
+{err}( invalid
+{txt}{search r(198), local:r(198);}
+
+{com}. summarize
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 11}t {c |}{res}        312       371.5    90.21086        216        527
+{txt}{space 9}mhr {c |}{res}        312    6.339744    2.075308        3.7       12.8
+{txt}{space 9}guj {c |}{res}        312     5.78109    1.591313        2.9       10.6
+{txt}{space 10}mp {c |}{res}        312    6.867949    2.029192        3.8       12.6
+{txt}{space 10}ap {c |}{res}        312    6.106731    2.413917        2.8       12.7
+{txt}{hline 13}{c +}{hline 57}
+{space 10}tn {c |}{res}        312    6.865064    1.965563        4.1       12.9
+{txt}{space 6}kerala {c |}{res}        312    6.833974    1.676967        4.2       10.5
+{txt}{space 6}mhrlag {c |}{res}        311    6.341801    2.078334        3.7       12.8
+{txt}{space 6}gujlag {c |}{res}        311    5.783601    1.593258        2.9       10.6
+{txt}{space 7}mplag {c |}{res}        311    6.872669    2.030746        3.8       12.6
+{txt}{hline 13}{c +}{hline 57}
+{space 7}aplag {c |}{res}        311    6.110289    2.416988        2.8       12.7
+{txt}{space 7}tnlag {c |}{res}        311     6.86656    1.968553        4.1       12.9
+{txt}{space 3}keralalag {c |}{res}        311    6.838264    1.677954        4.2       10.5
+{txt}{space 2}unempr_mhr {c |}{res}        311   -.0001109    .0273494  -.0901511   .0953102
+{txt}{space 2}unempr_guj {c |}{res}        311   -.0004213    .0331378  -.1031842   .1150693
+{txt}{hline 13}{c +}{hline 57}
+{space 3}unempr_mp {c |}{res}        311    .0001838    .0298311  -.0826917    .157629
+{txt}{space 3}unempr_ap {c |}{res}        311   -.0005322    .0339433  -.1335314   .1410786
+{txt}{space 3}unempr_tn {c |}{res}        311   -.0000989    .0304494  -.2388919   .1162598
+{txt}unempr_ker~a {c |}{res}        311   -.0005862    .0208254  -.0971637   .1053605
+{txt}{space 6}ln_mhr {c |}{res}        312    1.800933    .2940249   1.308333   2.549445
+{txt}{hline 13}{c +}{hline 57}
+{space 6}ln_guj {c |}{res}        312    1.718708    .2671663   1.064711   2.360854
+{txt}{space 7}ln_mp {c |}{res}        312    1.886143    .2820709   1.335001   2.533697
+{txt}{space 7}ln_ap {c |}{res}        312     1.73726    .3767605   1.029619   2.541602
+{txt}{space 7}Ln_tn {c |}{res}        312    1.888171    .2741848   1.410987   2.557227
+{txt}{space 3}ln_kerala {c |}{res}        312    1.891879    .2459177   1.435084   2.351375
+
+{com}. generate mmhr=mean(mhr)
+{err}unknown function mean()
+{txt}{search r(133), local:r(133);}
+
+{com}. generate mmhr=mean mhr
+{err}mean not found
+{txt}{search r(111), local:r(111);}
+
+{com}. mean(mhr)'
+{err}' invalid name
+{txt}{search r(198), local:r(198);}
+
+{com}. mean(mhr)
+{res}
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}       312
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 9}mhr {c |}{col 14}{res}{space 2} 6.339744{col 26}{space 2} .1174912{col 37}{space 5} 6.108565{col 51}{space 3} 6.570922
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. a = mean(mhr)
+{err}command {bf}a{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. generate a= mean(mhr)\
+{err}unknown function mean()
+{txt}{search r(133), local:r(133);}
+
+{com}. mean mhr
+{res}
+{txt}Mean estimation{col 35}Number of obs{col 51}= {res}       312
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 9}mhr {c |}{col 14}{res}{space 2} 6.339744{col 26}{space 2} .1174912{col 37}{space 5} 6.108565{col 51}{space 3} 6.570922
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. egen mmhr = mean(mhr)
+
+. egen mguj = mean(guj)
+
+. egen mmp = mean(mp)
+
+. egen map = mean(ap)
+
+. egen mtn = mean(tn)
+
+. egen mkerala = mean(kerala)
+
+. egen mmhr = mean(mhr)
+{err}variable {bf}mmhr{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. 
+. 
+. 
+. egen mguj = mean(guj)
+{err}variable {bf}mguj{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. 
+. 
+. 
+. egen mmp = mean(mp)
+{err}variable {bf}mmp{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. 
+. egen map = mean(ap)
+{err}variable {bf}map{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. 
+. 
+. 
+. . egen mtn = mean(tn)
+{err}variable {bf}mtn{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. 
+. 
+. 
+. . egen mkerala = mean(kerala)
+{err}variable {bf}mkerala{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. 
+. 
+. egen mmhrlag = mean(mhrlag)
+
+. 
+. 
+. 
+. egen mgujlag = mean(gujlag)
+
+. 
+. 
+. 
+. egen mmplag = mean(mplag)
+
+. 
+. 
+. 
+. egen maplag = mean(aplag)
+
+. 
+. 
+. 
+. egen mtnlag = mean(tnlag)
+
+. 
+. 
+. 
+. egen mkeralalag = mean(keralalag)
+
+. 
+. 
+. gen unempr_mguj = log(mguj) - log(mgujlag)
+
+. 
+. gen unempr_mmp = log(mmp) - log(mmplag)
+
+. 
+. gen unempr_map = log(map) - log(maplag)
+
+. 
+. gen unempr_mtn = log(mtn) - log(mtnlag)
+
+. 
+. gen unempr_mkerala = log(mkerala) - log(mkeralalag)
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\ayush\OneDrive\Desktop\stata class\24 june assignment log.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}26 Jun 2019, 15:25:14
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
